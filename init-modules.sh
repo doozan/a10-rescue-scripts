@@ -10,7 +10,7 @@ WIRED=`fexc -I bin -O fex /mnt/sysconfig/system.bin | grep emac_used | cut -d " 
 if [ $WIRED = 1 ]; then
   echo "Loading wired ethernet module"
   modprobe sun4i_wemac
-else
-  echo "Loading wireless module"
-  modprobe 8192cu
 fi
+
+echo "Loading wireless module"
+modprobe 8192cu

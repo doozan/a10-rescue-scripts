@@ -39,7 +39,7 @@ mount /dev/mmcblk0p2 /tmp/debian-filecheck
 if [ "$?" = "0" ]; then
   # ls will error if there are no files in the directory
   ls /tmp/debian-pretest/* > /dev/null
-  if [ "$?" != "0" ]; then
+  if [ "$?" = "0" ]; then
     umount /tmp/debian-filecheck
     rmdir /tmp/debian-filecheck
     log_exit "Files exist on mmcblk0p2, cannot continue"
