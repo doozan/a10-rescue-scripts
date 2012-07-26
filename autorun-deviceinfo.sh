@@ -4,6 +4,11 @@
 
 LOG=/mnt/sysconfig/log/deviceinfo.log
 
+if [ -f $LOG ]; then
+  echo "$LOG already exists, exiting"
+  exit
+fi
+
 mount -o remount,rw /mnt/sysconfig
 if [ ! -d /mnt/sysconfig/log ]; then
   mkdir /mnt/sysconfig/log
