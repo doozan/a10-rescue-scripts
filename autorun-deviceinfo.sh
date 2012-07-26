@@ -48,4 +48,4 @@ echo "================== dmesg =================" >> $LOG
 dmesg >> $LOG
 echo "" >> $LOG
 
-mount -o remount,rw /mnt/sysconfig
+mount -o remount,ro /mnt/sysconfig

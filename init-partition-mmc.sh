@@ -77,7 +77,7 @@ if [ "$?" -ne "0" ]; then
 fi
 
 echo "Successfully partitioned $DEVICE" | tee -a $LOG
-fdisk -l /dev/$DEVICE >> /mnt/sysconfig/log/autopartition.log >> $LOG
+fdisk -l /dev/$DEVICE >> $LOG
 mount -o remount,ro /mnt/sysconfig
 
 partprobe

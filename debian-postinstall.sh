@@ -8,7 +8,7 @@ mount /dev/mmcblk0p2 $ROOT
 
 
 # Example: configure custom hostname
-# echo mysystem >> $ROOT/etc/hostname
+# echo mysystem > $ROOT/etc/hostname
 
 
 umount /tmp/debian
