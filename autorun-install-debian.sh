@@ -2,15 +2,8 @@
 
 # This script will install debian on mmcblk0p2
 
-# You can customize the Debian installation by specifyingJ additional packages to
-# be installed.  You can specify multiple packages by separating them with a comma:
-# package1,package2,etc
-
-#EXTRA_PACKAGES=
-
 LOG=/mnt/sysconfig/log/debian.log
 INSTALLER=http://projects.doozan.com/debian/sun4i.debian-wheezy.sh
-
 
 log_exit()
 {
@@ -56,12 +49,7 @@ fi
 chmod +x install-debian.sh
 set -o pipefail  # capture return status of command and not of tee
 
-if [ "$EXTRA_PACKAGES" != "" ]; then
-  ./install-debian.sh --noprompt --extra-packages=$EXTRA_PACKAGES | tee -a $LOG
-else
-  ./install-debian.sh --noprompt | tee -a $LOG
-fi
-
+./install-debian.sh --noprompt | tee -a $LOG
 
 if [ "$?" -ne "0" ]; then
  log_exit "Debian installation failed, check debootstrap.log for details"
@@ -75,9 +63,4 @@ fi
 # Success
 mount -o remount,ro /mnt/sysconfig
 
-if [ -f /mnt/sysconfig/rescue/debian-postinstall.sh ]; then
-  sh /mnt/sysconfig/rescue/debian-postinstall.sh
-else
-  reboot
-fi
-
+reboot
