@@ -14,3 +14,5 @@ fi
 
 echo "Loading wireless module"
 modprobe 8192cu
+
+modprobe usbhid
